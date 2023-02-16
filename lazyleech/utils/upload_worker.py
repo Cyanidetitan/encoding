@@ -102,11 +102,12 @@ async def _upload_worker(client, message, reply, torrent_info, user_id, flags):
             for file in torrent_info['files']:
                 path = file['path']
                 name = path.replace(os.path.join(torrent_info['dir'], ''), '', 1)
+                name = re.sub(r'\s*(?:\[.+?\]|\(.+?\))\s*|\.[a-z][a-z0-9]{2}$', '', name)
                 name_split = name.split(".")
                 ext = name_split.pop()
-                filename = ".".join(name_split) + "_encoded" + f".{ext}"
+                filename = ".".join(name_split) + "[720p x265] @animxt" + f".{ext}"
                 filepath = os.path.dirname(path)+"/"+filename
-                cmd = f"""ffmpeg -i "{path}" -c:v libx265 -crf 28 "{filepath}" && echo Done"""
+                cmd = f"""ffmpeg -i "{path}" -c:v copy -c:a copy "{filepath}" && echo Done"""
                 await reply.edit_text(f"Encoding {name}")
                 k = await runcmd(cmd)
                 files[filepath] = filename
