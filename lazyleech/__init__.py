@@ -4,16 +4,16 @@ import aiohttp
 from io import BytesIO, StringIO
 from pyrogram import Client
 
-API_ID = os.environ.get('API_ID')
-API_HASH = os.environ.get('API_HASH')
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+API_ID = '3845818'
+API_HASH = '95937bcf6bc0938f263fc7ad96959c6d'
+BOT_TOKEN = '5498146373:AAELzEopwhbsr3vxoc28wjUezAhOn8IVZfU'
 TESTMODE = os.environ.get('TESTMODE')
 TESTMODE = TESTMODE and TESTMODE != '0'
 
 EVERYONE_CHATS = os.environ.get('EVERYONE_CHATS')
 EVERYONE_CHATS = list(map(int, EVERYONE_CHATS.split(' '))) if EVERYONE_CHATS else [-1001378211961]
 ADMIN_CHATS = os.environ.get('ADMIN_CHATS')
-ADMIN_CHATS = list(map(int, ADMIN_CHATS.split(' '))) if ADMIN_CHATS else [441422215]
+ADMIN_CHATS = list(map(int, ADMIN_CHATS.split(' '))) if ADMIN_CHATS else [5371981851]
 ALL_CHATS = EVERYONE_CHATS + ADMIN_CHATS
 # LICHER_* variables are for @animebatchstash and similar, not required
 LICHER_CHAT = os.environ.get('LICHER_CHAT', '')
