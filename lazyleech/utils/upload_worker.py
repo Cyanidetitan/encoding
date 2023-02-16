@@ -106,7 +106,7 @@ async def _upload_worker(client, message, reply, torrent_info, user_id, flags):
                 ext = name_split.pop()
                 filename = ".".join(name_split) + " [720p x265] @animxt" + f".{ext}"
                 filepath = os.path.dirname(path)+"/"+filename
-                cmd = f"""ffmpeg -i "{path}" -c:v libx264 -crf 28 "{filepath}" && echo Done"""
+                cmd = f"""ffmpeg -i "{path}" -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{filepath}" && echo Done"""
                 await reply.edit_text(f"Encoding {name}")
                 k = await runcmd(cmd)
                 files[filepath] = filename
