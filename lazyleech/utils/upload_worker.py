@@ -101,8 +101,7 @@ async def _upload_worker(client, message, reply, torrent_info, user_id, flags):
         elif EncodeFile in flags:
             for file in torrent_info['files']:
                 path = file['path']
-                name = path.replace(os.path.join(torrent_info['dir'], ''), '', 1)
-                name = re.sub(r'\s*(?:\[.+?\]|\(.+?\))\s*|\.[a-z][a-z0-9]{2}$', '', name)
+                name = path.replace(os.path.join(torrent_info['dir'], ''), '', 1]
                 name_split = name.split(".")
                 ext = name_split.pop()
                 filename = ".".join(name_split) + "[720p x265] @animxt" + f".{ext}"
